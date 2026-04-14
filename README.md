@@ -1,146 +1,61 @@
+# 🚗 GarageSystem
+
+Sistema ERP completo para oficinas mecânicas, focado em gestão de ordens de serviço, clientes, veículos, estoque e financeiro.
+
 ---
 
-# 🗂️ Estrutura de Diretórios — GarageSystem
+## 📌 Sobre o Projeto
 
-```bash
+O **GarageSystem** é um sistema web desenvolvido para facilitar o gerenciamento de oficinas mecânicas, permitindo controle total sobre:
+
+* Ordens de serviço (O.S)
+* Clientes e veículos
+* Produtos e estoque
+* Financeiro básico
+* Histórico de atendimentos
+
+O objetivo é centralizar todas as operações da oficina em um único sistema simples, eficiente e escalável.
+
+---
+
+## 🎯 Objetivo
+
+* Organizar processos da oficina
+* Reduzir erros operacionais
+* Controlar custos e lucros
+* Melhorar atendimento ao cliente
+* Facilitar crescimento do negócio
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+* **Backend:** PHP 8+
+* **Frontend:** HTML5, CSS3, JavaScript
+* **Banco de Dados:** MySQL
+* **Arquitetura:** MVC (Model-View-Controller)
+
+---
+
+## 📂 Estrutura do Projeto
+
+```
 garage-system/
-│
 ├── app/
 │   ├── controllers/
-│   │   ├── AuthController.php
-│   │   ├── ClienteController.php
-│   │   ├── VeiculoController.php
-│   │   ├── OrdemServicoController.php
-│   │   ├── ProdutoController.php
-│   │   ├── EstoqueController.php
-│   │   ├── FinanceiroController.php
-│   │   └── DashboardController.php
-│   │
 │   ├── models/
-│   │   ├── Cliente.php
-│   │   ├── Veiculo.php
-│   │   ├── OrdemServico.php
-│   │   ├── Produto.php
-│   │   ├── Usuario.php
-│   │   ├── Pagamento.php
-│   │   └── LogAlteracao.php
-│   │
 │   ├── services/
-│   │   ├── OrdemServicoService.php
-│   │   ├── EstoqueService.php
-│   │   ├── FinanceiroService.php
-│   │   ├── NotificacaoService.php
-│   │   └── RelatorioService.php
-│   │
-│   ├── repositories/   # (Opcional, mas profissional)
-│   │   ├── ClienteRepository.php
-│   │   ├── OrdemServicoRepository.php
-│   │   └── ProdutoRepository.php
-│   │
+│   ├── repositories/
 │   ├── middlewares/
-│   │   ├── AuthMiddleware.php
-│   │   ├── AdminMiddleware.php
-│   │   └── PermissionMiddleware.php
-│   │
 │   ├── helpers/
-│   │   ├── response.php
-│   │   ├── validator.php
-│   │   └── utils.php
-│   │
 │   └── core/
-│       ├── Controller.php
-│       ├── Model.php
-│       ├── Database.php
-│       ├── Router.php
-│       └── Session.php
 │
 ├── config/
-│   ├── app.php
-│   ├── database.php
-│   └── routes.php
-│
-├── public/   # raiz pública (entrypoint)
-│   ├── index.php
-│   ├── .htaccess
-│   │
-│   ├── assets/
-│   │   ├── css/
-│   │   │   ├── app.css
-│   │   │   └── dashboard.css
-│   │   │
-│   │   ├── js/
-│   │   │   ├── app.js
-│   │   │   ├── os.js
-│   │   │   └── estoque.js
-│   │   │
-│   │   ├── img/
-│   │   └── uploads/
-│   │       ├── veiculos/
-│   │       └── os/
-│
+├── public/
 ├── views/
-│   ├── layouts/
-│   │   ├── header.php
-│   │   ├── footer.php
-│   │   └── main.php
-│   │
-│   ├── auth/
-│   │   ├── login.php
-│   │   └── register.php
-│   │
-│   ├── dashboard/
-│   │   └── index.php
-│   │
-│   ├── clientes/
-│   │   ├── index.php
-│   │   ├── create.php
-│   │   ├── edit.php
-│   │   └── show.php
-│   │
-│   ├── veiculos/
-│   │   ├── index.php
-│   │   ├── create.php
-│   │   └── edit.php
-│   │
-│   ├── os/
-│   │   ├── index.php
-│   │   ├── create.php
-│   │   ├── edit.php
-│   │   ├── show.php
-│   │   └── print.php
-│   │
-│   ├── produtos/
-│   │   ├── index.php
-│   │   ├── create.php
-│   │   └── edit.php
-│   │
-│   └── financeiro/
-│       ├── index.php
-│       └── relatorio.php
-│
 ├── storage/
-│   ├── logs/
-│   │   └── app.log
-│   │
-│   ├── cache/
-│   └── sessions/
-│
 ├── database/
-│   ├── migrations/
-│   │   ├── 001_create_clientes.sql
-│   │   ├── 002_create_veiculos.sql
-│   │   ├── 003_create_os.sql
-│   │   └── ...
-│   │
-│   └── seeds/
-│       └── seed.sql
-│
 ├── routes/
-│   ├── web.php
-│   └── api.php
-│
-├── vendor/ (se usar composer)
-│
 ├── .env
 ├── composer.json
 └── README.md
@@ -148,156 +63,183 @@ garage-system/
 
 ---
 
-# 🧠 Explicação da Arquitetura
+## ⚙️ Funcionalidades
 
-## 🔹 `app/`
+### 👤 Clientes
 
-Coração do sistema.
+* Cadastro completo
+* Histórico de serviços
 
-* **controllers/** → Recebem requisições (HTTP)
-* **models/** → Representam tabelas do banco
-* **services/** → Regras de negócio (ESSENCIAL pra escalar)
-* **repositories/** → Abstração do banco (opcional, mas top nível senior)
-* **middlewares/** → Segurança e controle de acesso
-* **core/** → Base do sistema (mini framework)
+### 🚘 Veículos
 
----
+* Cadastro por cliente
+* Histórico de manutenção
 
-## 🔹 `public/`
+### 📄 Ordens de Serviço (O.S)
 
-Entrada do sistema (front controller)
+* Criação e gerenciamento
+* Controle de status
+* Alteração de valores com histórico
+* Descrição de problemas e diagnósticos
 
-* Tudo passa pelo `index.php`
-* Contém apenas arquivos públicos
+### 🧰 Produtos / Estoque
 
----
+* Cadastro de peças e insumos
+* Controle de entrada e saída
+* Associação com O.S
 
-## 🔹 `views/`
+### 💰 Financeiro
 
-Interface (HTML + PHP)
+* Registro de pagamentos
+* Controle de faturamento
+* Relatórios básicos
 
-Separado por domínio:
+### 👨‍🔧 Usuários
 
-* clientes/
-* veiculos/
-* os/
-* produtos/
-
----
-
-## 🔹 `config/`
-
-Configurações globais:
-
-* Banco
-* Rotas
-* App
+* Controle de acesso (Admin, Mecânico, Atendente)
 
 ---
 
-## 🔹 `storage/`
+## 🧠 Regras de Negócio
 
-Arquivos gerados:
-
-* Logs
-* Cache
-* Sessões
-
----
-
-## 🔹 `database/`
-
-Controle do banco:
-
-* migrations → versionamento
-* seeds → dados iniciais
+* Não é permitido finalizar O.S sem valor final
+* Alterações de valor exigem justificativa
+* Estoque não pode ficar negativo
+* O.S finalizada não pode ser editada
+* Cada veículo pertence a um único cliente
 
 ---
 
-## 🔹 `routes/`
+## 🚀 Instalação
 
-Separação clara:
+### 1. Clone o projeto
 
-* `web.php` → rotas normais
-* `api.php` → API REST
+```bash
+git clone https://github.com/seu-usuario/garage-system.git
+cd garage-system
+```
 
----
+### 2. Configure o ambiente
 
-# 🔥 Fluxo Real de Requisição
+Crie o arquivo `.env`:
 
-```text
-Usuário → public/index.php → Router → Controller → Service → Model → DB
-                                             ↓
-                                           View
+```
+DB_HOST=localhost
+DB_NAME=garage_system
+DB_USER=root
+DB_PASS=
+```
+
+### 3. Configure o banco de dados
+
+* Crie o banco:
+
+```sql
+CREATE DATABASE garage_system;
+```
+
+* Execute os arquivos em:
+
+```
+database/migrations/
 ```
 
 ---
 
-# 🧩 Exemplo de Fluxo (Criar O.S)
+### 4. Suba o servidor local
 
-1. POST `/os/create`
-2. Router chama:
+```bash
+php -S localhost:8000 -t public
+```
 
-   * `OrdemServicoController@store`
-3. Controller chama:
+Acesse:
 
-   * `OrdemServicoService`
-4. Service:
-
-   * valida dados
-   * calcula valores
-   * salva no banco
-5. Retorna resposta → View ou JSON
-
----
-
-# 🧱 Base mínima de arquivos importantes
-
-## 📌 `public/index.php`
-
-```php
-require_once '../vendor/autoload.php';
-
-use App\Core\Router;
-
-$router = new Router();
-require_once '../routes/web.php';
-
-$router->dispatch();
+```
+http://localhost:8000
 ```
 
 ---
 
-## 📌 `config/database.php`
+## 🔐 Segurança
 
-```php
-return [
-    'host' => 'localhost',
-    'dbname' => 'garage_system',
-    'user' => 'root',
-    'password' => ''
-];
-```
+* Senhas criptografadas (bcrypt)
+* Proteção contra SQL Injection (PDO)
+* Controle de sessão
+* Middleware de autenticação
 
 ---
 
-## 📌 `app/core/Database.php`
+## 📊 Funcionalidades Futuras
 
-```php
-class Database {
-    private static $instance;
+* Dashboard com gráficos
+* Integração com WhatsApp
+* Geração de PDF (O.S e recibos)
+* Sistema de agendamento
+* Controle de manutenção preventiva
+* API REST completa
+* Aplicativo mobile
 
-    public static function connect() {
-        if (!self::$instance) {
-            $config = require __DIR__ . '/../../config/database.php';
+---
 
-            self::$instance = new PDO(
-                "mysql:host={$config['host']};dbname={$config['dbname']}",
-                $config['user'],
-                $config['password']
-            );
-        }
-        return self::$instance;
-    }
-}
-```
+## 🧩 Padrões Utilizados
+
+* MVC (Model-View-Controller)
+* Service Layer
+* Repository Pattern (opcional)
+* Front Controller
+* Separation of Concerns
+
+---
+
+## 📌 Roadmap
+
+### ✅ MVP
+
+* Clientes
+* Veículos
+* O.S
+* Produtos
+* Financeiro básico
+
+### 🔜 V2
+
+* Relatórios
+* Dashboard
+* Logs de auditoria
+
+### 🚀 V3
+
+* Notificações
+* Mobile
+* Integrações externas
+
+---
+
+## 🤝 Contribuição
+
+Contribuições são bem-vindas!
+
+1. Fork o projeto
+2. Crie uma branch
+3. Commit suas alterações
+4. Abra um Pull Request
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Wesley Ruan**
+
+---
+
+## 💡 Observação
+
+Este projeto foi estruturado com foco em boas práticas de arquitetura e pode evoluir facilmente para um sistema SaaS completo.
+
+---
